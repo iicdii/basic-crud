@@ -1,0 +1,10 @@
+.loginForm {
+    background: white;
+    padding: 50px;
+    border-radius: 4px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 50px;
+}

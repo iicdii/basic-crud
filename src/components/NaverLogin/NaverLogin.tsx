@@ -20,9 +20,9 @@ const NaverLogin = () => {
   useEffect(() => {
     if (!naverLogin.current) return
 
-    naverLogin.current.getLoginStatus((status: any) => {
-      router.push('/main')
-    })
+    // naverLogin.current.getLoginStatus((status: any) => {
+    //   router.push('/main')
+    // })
   }, [router])
 
   return <div id="naverIdLogin" />

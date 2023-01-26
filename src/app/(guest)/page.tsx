@@ -1,14 +1,11 @@
-import NaverLogin from '@/components/NaverLogin/NaverLogin'
+import Home from '@/components/Home/Home'
 import styles from './page.module.css'
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <main className={styles.main}>
-        홈
-        <div>
-          <NaverLogin />
-        </div>
+        <Home />
       </main>
     </>
   )
