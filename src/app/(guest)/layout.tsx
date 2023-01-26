@@ -2,15 +2,15 @@ import React from 'react'
 import 'antd/dist/reset.css'
 import Script from 'next/script'
 import localFont from '@next/font/local'
-import './globals.css'
+import '../globals.css'
 
 const font = localFont({
-  src: '../assets/fonts/PretendardVariable.woff2',
+  src: '../../assets/fonts/PretendardVariable.woff2',
   // default, can also use "swap" to ensure custom font always shows
   display: 'optional',
 })
 
-export default function RootLayout({
+export default function GuestLayout({
   children,
 }: {
   children: React.ReactNode
