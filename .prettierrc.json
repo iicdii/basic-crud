@@ -3,7 +3,7 @@
   "tabWidth": 2,
   "semi": false,
   "singleQuote": true,
-  "importOrder": ["^react$", "<THIRD_PARTY_MODULES>", "^@(.*)/(.*)$", "^[./]", "^./(.*).css$"],
+  "importOrder": ["^react$", "<THIRD_PARTY_MODULES>", "^@[a-z]+/(.*)$",  "^@/(.*)$", "^[./]", "^./(.*).css$"],
   "importOrderSeparation": false,
   "importOrderSortSpecifiers": false,
   "plugins": ["@trivago/prettier-plugin-sort-imports"]
