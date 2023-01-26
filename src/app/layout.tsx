@@ -1,5 +1,6 @@
 import React from 'react'
 import 'antd/dist/reset.css'
+import Script from 'next/script'
 import localFont from '@next/font/local'
 import './globals.css'
 
@@ -20,7 +21,13 @@ export default function RootLayout({
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-      <head />
+      <head>
+        {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
+        <Script
+          src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body>{children}</body>
     </html>
   )
