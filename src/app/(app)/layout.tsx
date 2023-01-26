@@ -1,7 +1,7 @@
 import React from 'react'
 import 'antd/dist/reset.css'
 import localFont from '@next/font/local'
-import AntdProvider from '@/components/AntdProvider/AntdProvider'
+import Providers from '@/app/providers'
 import '../globals.css'
 
 const font = localFont({
@@ -15,7 +15,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <html lang="ko" className={font.className}>
       <head />
       <body>
-        <AntdProvider>{children}</AntdProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
