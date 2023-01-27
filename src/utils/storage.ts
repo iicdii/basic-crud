@@ -8,7 +8,7 @@ const setItem = (key: string, value: string) => {
 
 const getItem = (key: string) => {
   try {
-    localStorage.getItem(key)
+    return localStorage.getItem(key)
   } catch (e) {
     // ignore
   }

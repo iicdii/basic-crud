@@ -1,4 +1,6 @@
+import { ACCESS_TOKEN_NAME } from '@/constants/constants'
 import axiosClient from '@/utils/axiosClient'
+import storage from '@/utils/storage'
 
 // 유저 회원가입
 export interface PostUserSignUpRequest {
@@ -89,7 +91,11 @@ export interface GetUserInfoResponse {
 }
 
 export const getUserInfo = () => {
-  return axiosClient.get<GetUserInfoResponse>('/users/userInfo')
+  return axiosClient.get<GetUserInfoResponse>('/users/userInfo', {
+    headers: {
+      Authorization: `Bearer ${storage.getItem(ACCESS_TOKEN_NAME)}`,
+    },
+  })
 }
 
 // 유저 업데이트
@@ -100,7 +106,11 @@ export interface PatchUserRequest {
 }
 
 export const patchUser = (data: PatchUserRequest) => {
-  return axiosClient.patch('/users', data)
+  return axiosClient.patch('/users', data, {
+    headers: {
+      Authorization: `Bearer ${storage.getItem(ACCESS_TOKEN_NAME)}`,
+    },
+  })
 }
 
 // 유저 삭제
@@ -113,5 +123,9 @@ export interface DeleteUserResponse {
 }
 
 export const deleteUser = () => {
-  return axiosClient.delete<DeleteUserResponse>('/users')
+  return axiosClient.delete<DeleteUserResponse>('/users', {
+    headers: {
+      Authorization: `Bearer ${storage.getItem(ACCESS_TOKEN_NAME)}`,
+    },
+  })
 }

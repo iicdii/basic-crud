@@ -32,9 +32,7 @@ const SignUpForm = () => {
             message.error(data?.message)
           }
         } else {
-          message.error(
-            '회원가입 시도 중 오류가 발생하였습니다. 잠시 후 다시 시도해주세요.'
-          )
+          message.error('오류가 발생하였습니다. 잠시 후 다시 시도해주세요.')
         }
       },
     })
@@ -42,7 +40,7 @@ const SignUpForm = () => {
 
   return (
     <Form
-      name="basic"
+      name="sign-up"
       className={styles.form}
       labelCol={{ span: 24 }}
       initialValues={{}}

@@ -35,9 +35,7 @@ const LoginForm = ({ onGetNaverUserInfo }: LoginFormProps) => {
         if ((error.response?.status || 0) === 400) {
           message.error('아이디 또는 비밀번호가 일치하지 않습니다.')
         } else {
-          message.error(
-            '로그인 시도 중 오류가 발생하였습니다. 잠시 후 다시 시도해주세요.'
-          )
+          message.error('오류가 발생하였습니다. 잠시 후 다시 시도해주세요.')
         }
       },
     })
@@ -45,7 +43,7 @@ const LoginForm = ({ onGetNaverUserInfo }: LoginFormProps) => {
 
   return (
     <Form
-      name="basic"
+      name="login"
       className={styles.form}
       labelCol={{ span: 24 }}
       initialValues={{}}

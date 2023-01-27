@@ -1,34 +1,34 @@
 import axiosClient from '@/utils/axiosClient'
 
 // 코멘트 작성
-export interface PostComment {
+export interface PostCommentRequest {
   boardId: string
   comment: string
 }
 
-export const postComment = (data: PostComment) => {
+export const postComment = (data: PostCommentRequest) => {
   return axiosClient.post('/comments', data)
 }
 
 // 코멘트 조회
-export interface GetComments {
+export interface GetCommentsParams {
   skip: number
   take: number
 }
 
-export const getComments = (params: GetComments) => {
+export const getComments = (params: GetCommentsParams) => {
   return axiosClient.get('/comments', {
     params,
   })
 }
 
 // 유저가 쓴 코멘트 조회
-export interface GetUserComments {
+export interface GetUserCommentsParams {
   skip: number
   take: number
 }
 
-export const getUserComments = (params: GetUserComments) => {
+export const getUserComments = (params: GetUserCommentsParams) => {
   return axiosClient.get('/comments/user/comments', {
     params,
   })
@@ -40,11 +40,11 @@ export const getComment = (commentId: string) => {
 }
 
 // 코멘트 수정
-export interface PatchComment {
+export interface PatchCommentRequest {
   comment: string
 }
 
-export const patchComment = (commentId: string, data: PatchComment) => {
+export const patchComment = (commentId: string, data: PatchCommentRequest) => {
   return axiosClient.patch(`/comments/${commentId}`, data)
 }
 

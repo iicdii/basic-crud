@@ -29,10 +29,11 @@ const Home = () => {
     // 로그인 실패 시 소셜 회원가입 시도
     // 실패 시 에러 메세지 출력
     try {
-      await socialLogin.mutateAsync({
+      const res = await socialLogin.mutateAsync({
         socialPlatform: 'naver',
         token: accessToken,
       })
+      storage.setItem(ACCESS_TOKEN_NAME, res.data.token)
       router.push('/main')
       return
     } catch (e: unknown) {
