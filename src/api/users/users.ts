@@ -91,3 +91,27 @@ export interface GetUserInfoResponse {
 export const getUserInfo = () => {
   return axiosClient.get<GetUserInfoResponse>('/users/userInfo')
 }
+
+// 유저 업데이트
+export interface PatchUserRequest {
+  email: string
+  password: string
+  username: string
+}
+
+export const patchUser = (data: PatchUserRequest) => {
+  return axiosClient.patch('/users', data)
+}
+
+// 유저 삭제
+export interface DeleteUserResponse {
+  data: {
+    raw: []
+    affected: boolean
+  }
+  message: string
+}
+
+export const deleteUser = () => {
+  return axiosClient.delete<DeleteUserResponse>('/users')
+}

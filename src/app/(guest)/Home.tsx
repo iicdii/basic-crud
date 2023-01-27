@@ -20,7 +20,8 @@ const Home = () => {
   const router = useRouter()
 
   const handleNaverLogin = async (user: NaverUserInfo) => {
-    const [, accessToken] = window.location.hash.split('=')
+    const [, x] = window.location.hash.split('=')
+    const [accessToken] = x.split('&')
     if (!accessToken) return
     storage.setItem(NAVER_TOKEN_NAME, accessToken)
 
@@ -32,6 +33,7 @@ const Home = () => {
         socialPlatform: 'naver',
         token: accessToken,
       })
+      router.push('/main')
       return
     } catch (e: unknown) {
       if (e instanceof AxiosError<RequestError>) {
@@ -53,7 +55,7 @@ const Home = () => {
       const res = await socialSignUp.mutateAsync({
         socialPlatform: 'naver',
         token: accessToken,
-        username,
+        username: username + '123',
       })
       storage.setItem(ACCESS_TOKEN_NAME, res.data.token)
       router.push('/main')
