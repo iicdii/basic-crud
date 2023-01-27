@@ -1,0 +1,12 @@
+.signUpForm {
+    background: white;
+    padding: 30px;
+    border-radius: 4px;
+    max-width: 380px;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 50px;
+}

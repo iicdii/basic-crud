@@ -5,13 +5,16 @@ import {
   PostUserSignUpRequest,
   PostUserSignUpResponse,
 } from '@/api/users/users'
+import { RequestError } from '@/types/error'
 
 const useSignUp = () => {
-  return useMutation<PostUserSignUpResponse, AxiosError, PostUserSignUpRequest>(
-    {
-      mutationFn: (data) => postUserSignUp(data).then((res) => res.data),
-    }
-  )
+  return useMutation<
+    PostUserSignUpResponse,
+    AxiosError<RequestError>,
+    PostUserSignUpRequest
+  >({
+    mutationFn: (data) => postUserSignUp(data).then((res) => res.data),
+  })
 }
 
 export default useSignUp

@@ -1,11 +1,11 @@
-import Home from './Home'
+import SignUp from './SignUp'
 import styles from './page.module.css'
 
-export default function HomePage() {
+export default function SignUpPage() {
   return (
     <>
       <main className={styles.main}>
-        <Home />
+        <SignUp />
       </main>
     </>
   )
