@@ -1,9 +1,5 @@
-import styles from './page.module.css'
+import Main from './Main'
 
 export default function MainPage() {
-  return (
-    <>
-      <main className={styles.main}>메인</main>
-    </>
-  )
+  return <Main />
 }

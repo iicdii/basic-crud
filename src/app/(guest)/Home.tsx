@@ -21,8 +21,8 @@ const Home = () => {
 
   const handleNaverLogin = async (user: NaverUserInfo) => {
     const [, x] = window.location.hash.split('=')
+    if (!x) return
     const [accessToken] = x.split('&')
-    if (!accessToken) return
     storage.setItem(NAVER_TOKEN_NAME, accessToken)
 
     // 소셜 로그인 시도

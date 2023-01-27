@@ -1,3 +1,7 @@
+:root {
+  --main-bg-color: #efefef;
+}
+
 html,
 body {
   max-width: 100vw;
@@ -5,7 +9,7 @@ body {
 }
 
 body {
-  background: #efefef;
+  background: var(--main-bg-color);
 }
 
 a {

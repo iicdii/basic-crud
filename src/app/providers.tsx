@@ -13,6 +13,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       <ConfigProvider
         theme={{
           token: {
+            colorBgLayout: '#efefef',
             fontFamily: '',
           },
         }}

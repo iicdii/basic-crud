@@ -3,6 +3,7 @@ import 'antd/dist/reset.css'
 import localFont from '@next/font/local'
 import Providers from '@/app/providers'
 import '../globals.css'
+import BasicLayout from './BasicLayout'
 
 const font = localFont({
   src: '../../assets/fonts/PretendardVariable.woff2',
@@ -15,7 +16,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <html lang="ko" className={font.className}>
       <head />
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <BasicLayout>{children}</BasicLayout>
+        </Providers>
       </body>
     </html>
   )
