@@ -22,8 +22,19 @@ export interface GetBoardsParams {
   take: number
 }
 
-export const getBoards = (params: GetBoardsParams) => {
-  return axiosClient.get('/boards', {
+export interface GetBoardsResponse {
+  data: {
+    id: string
+    content: string
+    created_at: string
+    name: string
+    usersId: string
+  }
+  message: string
+}
+
+export const getBoards = (params: GetBoardsParams = { skip: 0, take: 5 }) => {
+  return axiosClient.get<GetBoardsResponse>('/boards', {
     params,
   })
 }

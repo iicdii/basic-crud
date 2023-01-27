@@ -1,39 +1,36 @@
 'use client'
 
-import { Button, Divider, Form, Input, Typography, message } from 'antd'
-import Link from 'next/link'
-import { PostUserSignInRequest } from '@/api/users/users'
-import NaverLogin from '@/components/NaverLogin/NaverLogin'
+import { Button, Divider, Form, Input, message } from 'antd'
+import { PostUserSignUpRequest } from '@/api/users/users'
+import NaverLogin from '@/components/users/NaverLogin/NaverLogin'
+import styles from '@/components/users/SignUpForm/SignUpForm.module.css'
 import { ACCESS_TOKEN_NAME } from '@/constants/constants'
-import useSignIn from '@/quries/users/useSignIn'
-import { NaverUserInfo } from '@/types/user'
+import useSignUp from '@/quries/users/useSignUp'
 import storage from '@/utils/storage'
-import styles from './LoginForm.module.css'
 
-type LoginFormValues = PostUserSignInRequest
+type SignUpFormValues = PostUserSignUpRequest
 
-const { Text } = Typography
+const SignUpForm = () => {
+  const { mutate } = useSignUp()
 
-interface LoginFormProps {
-  onGetNaverUserInfo: (user: NaverUserInfo) => void
-}
-
-const LoginForm = ({ onGetNaverUserInfo }: LoginFormProps) => {
-  const { mutate } = useSignIn()
-
-  const handleFinish = (values: LoginFormValues) => {
+  const handleFinish = (values: SignUpFormValues) => {
     const msgKey = 'submitting'
-    message.loading({ key: msgKey, content: '로그인 중' })
+    message.loading({ key: msgKey, content: '회원가입 중' })
     mutate(values, {
       onSuccess: (res) => {
         message.destroy(msgKey)
-        message.info('로그인 성공')
+        message.info('회원가입 성공')
         storage.setItem(ACCESS_TOKEN_NAME, res.data.token)
       },
       onError: (error) => {
         message.destroy(msgKey)
-        if ((error.response?.status || 0) === 400) {
-          message.error('아이디 또는 비밀번호가 일치하지 않습니다.')
+        const { data } = error.response || {}
+        if ((data?.statusCode || 0) === 400) {
+          if (Array.isArray(data?.message)) {
+            message.error(data?.message.pop())
+          } else {
+            message.error(data?.message)
+          }
         } else {
           message.error('오류가 발생하였습니다. 잠시 후 다시 시도해주세요.')
         }
@@ -43,7 +40,7 @@ const LoginForm = ({ onGetNaverUserInfo }: LoginFormProps) => {
 
   return (
     <Form
-      name="login"
+      name="sign-up"
       className={styles.form}
       labelCol={{ span: 24 }}
       initialValues={{}}
@@ -51,6 +48,16 @@ const LoginForm = ({ onGetNaverUserInfo }: LoginFormProps) => {
       layout="vertical"
       autoComplete="off"
     >
+      <Form.Item
+        label="이메일"
+        name="email"
+        rules={[
+          { required: true, message: '이메일을 입력해 주세요.', type: 'email' },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
       <Form.Item
         label="아이디"
         name="username"
@@ -69,23 +76,17 @@ const LoginForm = ({ onGetNaverUserInfo }: LoginFormProps) => {
 
       <Form.Item wrapperCol={{ span: 24 }} className={styles.loginButton}>
         <Button type="primary" htmlType="submit">
-          로그인
+          회원가입
         </Button>
       </Form.Item>
 
       <Divider>또는</Divider>
 
       <div className={styles.socialLogin}>
-        <NaverLogin onGetNaverUserInfo={onGetNaverUserInfo} />
-      </div>
-
-      <div className={styles.signUp}>
-        <Text>
-          아직 회원이 아니신가요? <Link href="/signup">회원가입</Link>
-        </Text>
+        <NaverLogin />
       </div>
     </Form>
   )
 }
 
-export default LoginForm
+export default SignUpForm

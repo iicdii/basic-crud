@@ -1,14 +1,20 @@
 'use client'
 
-import { Typography } from 'antd'
+import { Divider } from 'antd'
 import { useRouter } from 'next/navigation'
-
-const { Title } = Typography
+import PostForm from '@/components/boards/PostForm/PostForm'
+import Posts from '@/components/boards/Posts/Posts'
 
 const Main = () => {
   const router = useRouter()
 
-  return <div>테스트</div>
+  return (
+    <>
+      <PostForm />
+      <Divider />
+      <Posts />
+    </>
+  )
 }
 
 export default Main

@@ -3,7 +3,7 @@
 import { message, Typography } from 'antd'
 import { AxiosError } from 'axios'
 import { useRouter } from 'next/navigation'
-import LoginForm from '@/components/LoginForm/LoginForm'
+import LoginForm from '@/components/users/LoginForm/LoginForm'
 import { ACCESS_TOKEN_NAME, NAVER_TOKEN_NAME } from '@/constants/constants'
 import useSocialLogin from '@/quries/users/useSocialLogin'
 import useSocialSignUp from '@/quries/users/useSocialSignUp'

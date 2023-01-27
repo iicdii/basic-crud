@@ -1,7 +1,7 @@
 'use client'
 
 import { Typography } from 'antd'
-import SignUpForm from '@/components/SignUpForm/SignUpForm'
+import SignUpForm from '@/components/users/SignUpForm/SignUpForm'
 import styles from './SignUp.module.css'
 
 const { Title } = Typography
