@@ -1,6 +1,8 @@
 import { Button, Form, Input, message } from 'antd'
+import { useQueryClient } from '@tanstack/react-query'
 import { PostBoardRequest } from '@/api/boards/boards'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
+import { QUERY_KEY } from '@/constants/queryKey'
 import usePostBoard from '@/quries/boards/usePostBoard'
 
 const { TextArea } = Input
@@ -8,6 +10,7 @@ const { TextArea } = Input
 type PostFormValues = PostBoardRequest
 
 const PostForm = () => {
+  const queryClient = useQueryClient()
   const { mutate } = usePostBoard()
   const handleFinish = (values: PostFormValues) => {
     const messageKey = 'submitting'
@@ -19,6 +22,7 @@ const PostForm = () => {
       onSuccess: () => {
         message.destroy(messageKey)
         message.success('게시글 업로드가 완료되었습니다.')
+        queryClient.invalidateQueries([QUERY_KEY.getBoards])
       },
       onError: () => {
         message.destroy(messageKey)
