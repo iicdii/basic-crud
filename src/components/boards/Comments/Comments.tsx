@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Avatar, Button, Card, List, message, Modal, Skeleton } from 'antd'
+import React, { useState } from 'react'
+import { Button, Card, List, message, Modal, Skeleton } from 'antd'
 import CommentUpdateForm from '@/components/boards/CommentUpdateForm/CommentUpdateForm'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
 import useDeleteComment from '@/quries/comments/useDeleteComment'
@@ -89,7 +89,14 @@ const Comments = ({ initialData, onSubmit }: CommentsProps) => {
                   onSubmit={handleCommentUpdate}
                 />
               ) : (
-                <div>{item.comment}</div>
+                <div>
+                  {item.comment.split('\n').map((n, i) => (
+                    <React.Fragment key={i}>
+                      {n}
+                      <br />
+                    </React.Fragment>
+                  ))}
+                </div>
               )}
             </Skeleton>
           </List.Item>

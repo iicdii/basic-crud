@@ -1,3 +1,4 @@
+import React from 'react'
 import { Card, theme } from 'antd'
 import Link from 'next/link'
 import { Post as PostType } from '@/types/board'
@@ -17,10 +18,22 @@ const Post = ({ post, link }: PostProps) => {
     <Card title={post.name} bordered={false}>
       {link ? (
         <Link href={link} style={{ color: token.colorText }}>
-          {post.content}
+          <div>
+            {post.content.split('\n').map((n, i) => (
+              <React.Fragment key={i}>
+                {n}
+                <br />
+              </React.Fragment>
+            ))}
+          </div>
         </Link>
       ) : (
-        post.content
+        post.content.split('\n').map((n, i) => (
+          <React.Fragment key={i}>
+            {n}
+            <br />
+          </React.Fragment>
+        ))
       )}
     </Card>
   )
