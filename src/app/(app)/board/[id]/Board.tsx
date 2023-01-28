@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import CommentForm from '@/components/boards/CommentForm/CommentForm'
 import Comments from '@/components/boards/Comments/Comments'
 import Post from '@/components/boards/Post/Post'
-import usePost from '@/quries/boards/usePost'
+import usePost from '@/queries/boards/usePost'
 import styles from './Board.module.css'
 
 const Board = () => {

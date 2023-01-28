@@ -3,7 +3,7 @@
 import { Button, Form, Input, message } from 'antd'
 import { PatchUserRequest } from '@/api/users/users'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
-import useUserUpdate from '@/quries/users/useUserUpdate'
+import useUserUpdate from '@/queries/users/useUserUpdate'
 import styles from './UserUpdateForm.module.css'
 
 interface UserUpdateFormValues {

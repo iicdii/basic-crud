@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Button, Space } from 'antd'
 import { GetBoardsParams } from '@/api/boards/boards'
 import Post from '@/components/boards/Post/Post'
-import usePosts from '@/quries/boards/usePosts'
+import usePosts from '@/queries/boards/usePosts'
 import { Post as PostType } from '@/types/board'
 import styles from './Posts.module.css'
 

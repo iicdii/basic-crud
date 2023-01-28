@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { PatchBoardRequest } from '@/api/boards/boards'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
-import usePostDelete from '@/quries/boards/usePostDelete'
-import usePostUpdate from '@/quries/boards/usePostUpdate'
+import usePostDelete from '@/queries/boards/usePostDelete'
+import usePostUpdate from '@/queries/boards/usePostUpdate'
 import { Post as PostType } from '@/types/board'
 
 interface PostProps {

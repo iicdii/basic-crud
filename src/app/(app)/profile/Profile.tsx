@@ -6,8 +6,8 @@ import { useRouter } from 'next/navigation'
 import styles from 'src/app/(app)/profile/Profile.module.css'
 import UserUpdateForm from '@/components/users/UserUpdateForm/UserUpdateForm'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
-import useUserDelete from '@/quries/users/useUserDelete'
-import useUserInfo from '@/quries/users/useUserInfo'
+import useUserDelete from '@/queries/users/useUserDelete'
+import useUserInfo from '@/queries/users/useUserInfo'
 
 type ProfileMode = 'view' | 'edit'
 

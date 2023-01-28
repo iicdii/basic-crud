@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { PostBoardRequest } from '@/api/boards/boards'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
 import { QUERY_KEY } from '@/constants/queryKey'
-import usePostCreate from '@/quries/boards/usePostCreate'
+import usePostCreate from '@/queries/boards/usePostCreate'
 
 const { TextArea } = Input
 

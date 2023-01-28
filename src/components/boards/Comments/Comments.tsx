@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Card, List, message, Modal, Skeleton } from 'antd'
 import CommentUpdateForm from '@/components/boards/CommentUpdateForm/CommentUpdateForm'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
-import useCommentDelete from '@/quries/comments/useCommentDelete'
+import useCommentDelete from '@/queries/comments/useCommentDelete'
 import { Comment } from '@/types/board'
 import styles from './Comments.module.css'
 

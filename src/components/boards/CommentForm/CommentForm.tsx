@@ -1,7 +1,7 @@
 import { Button, Form, Input, message } from 'antd'
 import { PostCommentRequest } from '@/api/comments/comments'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
-import useCommentCreate from '@/quries/comments/useCommentCreate'
+import useCommentCreate from '@/queries/comments/useCommentCreate'
 
 const { TextArea } = Input
 

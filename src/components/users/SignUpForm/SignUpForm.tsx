@@ -6,7 +6,7 @@ import NaverLogin from '@/components/users/NaverLogin/NaverLogin'
 import styles from '@/components/users/SignUpForm/SignUpForm.module.css'
 import { ACCESS_TOKEN_NAME } from '@/constants/constants'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
-import useSignUp from '@/quries/users/useSignUp'
+import useSignUp from '@/queries/users/useSignUp'
 import storage from '@/utils/storage'
 
 type SignUpFormValues = PostUserSignUpRequest

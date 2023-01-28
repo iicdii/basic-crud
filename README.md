@@ -20,4 +20,7 @@ corepack enable
 
 pnpm install
 pnpm dev
+
+# 테스트 실행
+pnpm test
 ```

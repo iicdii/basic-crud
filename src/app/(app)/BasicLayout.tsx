@@ -5,7 +5,7 @@ import { Layout, Menu, message } from 'antd'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { ACCESS_TOKEN_NAME } from '@/constants/constants'
-import useUserInfo from '@/quries/users/useUserInfo'
+import useUserInfo from '@/queries/users/useUserInfo'
 import storage from '@/utils/storage'
 
 const { Header, Content, Footer } = Layout
