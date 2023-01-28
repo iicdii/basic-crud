@@ -14,6 +14,8 @@ interface CommentFormProps {
 
 const CommentForm = ({ boardId, onSubmit }: CommentFormProps) => {
   const { mutate } = usePostComment()
+  const [form] = Form.useForm()
+
   const handleFinish = (values: CommentFormValues) => {
     const messageKey = 'submitting'
     message.loading({
@@ -26,6 +28,7 @@ const CommentForm = ({ boardId, onSubmit }: CommentFormProps) => {
         onSuccess: () => {
           message.destroy(messageKey)
           message.success('댓글 작성이 완료되었습니다.')
+          form.resetFields()
           onSubmit?.()
         },
         onError: () => {
@@ -38,7 +41,8 @@ const CommentForm = ({ boardId, onSubmit }: CommentFormProps) => {
 
   return (
     <Form
-      name="post"
+      name="comment"
+      form={form}
       initialValues={{}}
       onFinish={handleFinish}
       layout="vertical"
