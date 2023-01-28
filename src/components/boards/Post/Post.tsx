@@ -1,14 +1,27 @@
-import { Card } from 'antd'
-import { GetBoardsResponse } from '@/api/boards/boards'
+import { Card, theme } from 'antd'
+import Link from 'next/link'
+import { Post as PostType } from '@/types/board'
 
 interface PostProps {
-  post: GetBoardsResponse['data']
+  post: PostType | undefined
+  link?: string
 }
 
-const Post = ({ post }: PostProps) => {
+const { useToken } = theme
+
+const Post = ({ post, link }: PostProps) => {
+  const { token } = useToken()
+  if (!post) return null
+
   return (
     <Card title={post.name} bordered={false}>
-      {post.content}
+      {link ? (
+        <Link href={link} style={{ color: token.colorText }}>
+          {post.content}
+        </Link>
+      ) : (
+        post.content
+      )}
     </Card>
   )
 }

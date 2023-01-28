@@ -1,4 +1,5 @@
 import { ACCESS_TOKEN_NAME } from '@/constants/constants'
+import { Post, Comment } from '@/types/board'
 import axiosClient from '@/utils/axiosClient'
 import storage from '@/utils/storage'
 
@@ -23,13 +24,7 @@ export interface GetBoardsParams {
 }
 
 export interface GetBoardsResponse {
-  data: {
-    id: string
-    content: string
-    created_at: string
-    name: string
-    usersId: string
-  }
+  data: Post[]
   message: string
 }
 
@@ -52,8 +47,16 @@ export const getUserPosts = (params: GetUserPostsParams) => {
 }
 
 // 게시글 조회
+export interface GetBoardResponse {
+  data: {
+    post: Post
+    comment: Omit<Comment, 'boardsId'>[]
+  }
+  message: string
+}
+
 export const getBoard = (boardId: string) => {
-  return axiosClient.get(`/boards/${boardId}`)
+  return axiosClient.get<GetBoardResponse>(`/boards/${boardId}`)
 }
 
 // 게시글 수정

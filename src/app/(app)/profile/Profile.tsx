@@ -64,7 +64,7 @@ const Profile = () => {
               itemLayout="horizontal"
               dataSource={[
                 {
-                  label: '사용자명',
+                  label: '아이디',
                   value: data?.data.username,
                 },
                 {

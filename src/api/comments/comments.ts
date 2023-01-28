@@ -1,3 +1,4 @@
+import { Comment } from '@/types/board'
 import axiosClient from '@/utils/axiosClient'
 
 // 코멘트 작성
@@ -16,10 +17,15 @@ export interface GetCommentsParams {
   take: number
 }
 
+export interface GetCommentsResponse {
+  data: Comment[]
+  message: string
+}
+
 export const getComments = (
   params: GetCommentsParams = { skip: 0, take: 5 }
 ) => {
-  return axiosClient.get('/comments', {
+  return axiosClient.get<GetCommentsResponse>('/comments', {
     params,
   })
 }
@@ -34,6 +40,11 @@ export const getUserComments = (params: GetUserCommentsParams) => {
   return axiosClient.get('/comments/user/comments', {
     params,
   })
+}
+
+export interface GetComment {
+  data: Comment
+  message: string
 }
 
 // 코멘트 조회
