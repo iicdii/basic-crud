@@ -1,0 +1,9 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.withdrawal {
+    margin-top: 20px;
+    text-align: right;
+}

@@ -6,6 +6,7 @@ import styles from 'src/components/users/LoginForm/LoginForm.module.css'
 import { PostUserSignInRequest } from '@/api/users/users'
 import NaverLogin from '@/components/users/NaverLogin/NaverLogin'
 import { ACCESS_TOKEN_NAME } from '@/constants/constants'
+import { COMMON_ERROR_MESSAGE } from '@/constants/error'
 import useSignIn from '@/quries/users/useSignIn'
 import { NaverUserInfo } from '@/types/user'
 import storage from '@/utils/storage'
@@ -35,7 +36,7 @@ const LoginForm = ({ onGetNaverUserInfo }: LoginFormProps) => {
         if ((error.response?.status || 0) === 400) {
           message.error('아이디 또는 비밀번호가 일치하지 않습니다.')
         } else {
-          message.error('오류가 발생하였습니다. 잠시 후 다시 시도해주세요.')
+          message.error(COMMON_ERROR_MESSAGE)
         }
       },
     })

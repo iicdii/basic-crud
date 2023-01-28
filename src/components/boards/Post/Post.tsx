@@ -7,7 +7,7 @@ interface PostProps {
 
 const Post = ({ post }: PostProps) => {
   return (
-    <Card title={post.name} bordered={false} style={{ width: '100%' }}>
+    <Card title={post.name} bordered={false}>
       {post.content}
     </Card>
   )

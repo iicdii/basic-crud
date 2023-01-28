@@ -1,5 +1,6 @@
 import { Button, Form, Input, message } from 'antd'
 import { PostBoardRequest } from '@/api/boards/boards'
+import { COMMON_ERROR_MESSAGE } from '@/constants/error'
 import usePostBoard from '@/quries/boards/usePostBoard'
 
 const { TextArea } = Input
@@ -21,7 +22,7 @@ const PostForm = () => {
       },
       onError: () => {
         message.destroy(messageKey)
-        message.error('오류가 발생하였습니다. 잠시 후 다시 시도해주세요.')
+        message.error(COMMON_ERROR_MESSAGE)
       },
     })
   }

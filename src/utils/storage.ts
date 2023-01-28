@@ -14,7 +14,16 @@ const getItem = (key: string) => {
   }
 }
 
+const removeItem = (key: string) => {
+  try {
+    localStorage.removeItem(key)
+  } catch (e) {
+    // ignore
+  }
+}
+
 export default {
   setItem,
   getItem,
+  removeItem,
 }

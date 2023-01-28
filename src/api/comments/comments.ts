@@ -16,7 +16,9 @@ export interface GetCommentsParams {
   take: number
 }
 
-export const getComments = (params: GetCommentsParams) => {
+export const getComments = (
+  params: GetCommentsParams = { skip: 0, take: 5 }
+) => {
   return axiosClient.get('/comments', {
     params,
   })

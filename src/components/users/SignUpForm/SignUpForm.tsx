@@ -5,6 +5,7 @@ import { PostUserSignUpRequest } from '@/api/users/users'
 import NaverLogin from '@/components/users/NaverLogin/NaverLogin'
 import styles from '@/components/users/SignUpForm/SignUpForm.module.css'
 import { ACCESS_TOKEN_NAME } from '@/constants/constants'
+import { COMMON_ERROR_MESSAGE } from '@/constants/error'
 import useSignUp from '@/quries/users/useSignUp'
 import storage from '@/utils/storage'
 
@@ -32,7 +33,7 @@ const SignUpForm = () => {
             message.error(data?.message)
           }
         } else {
-          message.error('오류가 발생하였습니다. 잠시 후 다시 시도해주세요.')
+          message.error(COMMON_ERROR_MESSAGE)
         }
       },
     })
