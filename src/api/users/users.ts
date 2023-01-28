@@ -101,7 +101,7 @@ export const getUserInfo = () => {
 // 유저 업데이트
 export interface PatchUserRequest {
   email: string
-  password: string
+  password?: string
   username: string
 }
 
