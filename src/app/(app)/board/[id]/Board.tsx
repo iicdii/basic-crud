@@ -12,23 +12,18 @@ const Board = () => {
   const pathname = usePathname()
   const [, boardId] = pathname?.split('/board/') || []
   const { isLoading, data, refetch } = usePost(boardId)
-  const handleCommentSubmit = () => {
-    refetch()
-  }
-  const handleCommentDeleteSubmit = () => {
-    refetch()
-  }
 
   return (
     <div className={styles.container}>
-      {isLoading ? <Skeleton /> : <Post post={data?.data?.post} />}
+      {isLoading ? (
+        <Skeleton />
+      ) : (
+        <Post post={data?.data?.post} hasAction={true} onSubmit={refetch} />
+      )}
       <div className={styles.comments}>
-        <Comments
-          initialData={data?.data?.comment}
-          onSubmit={handleCommentDeleteSubmit}
-        />
+        <Comments initialData={data?.data?.comment} onSubmit={refetch} />
       </div>
-      <CommentForm boardId={boardId} onSubmit={handleCommentSubmit} />
+      <CommentForm boardId={boardId} onSubmit={refetch} />
     </div>
   )
 }

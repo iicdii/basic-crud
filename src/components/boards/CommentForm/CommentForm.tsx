@@ -45,12 +45,14 @@ const CommentForm = ({ boardId, onSubmit }: CommentFormProps) => {
       form={form}
       initialValues={{}}
       onFinish={handleFinish}
-      layout="vertical"
+      layout="inline"
       autoComplete="off"
+      style={{ justifyContent: 'space-between', alignItems: 'center' }}
     >
       <Form.Item
         name="comment"
         rules={[{ required: true, message: '내용을 입력해 주세요' }]}
+        style={{ flex: 1 }}
       >
         <TextArea placeholder="댓글을 남겨보세요" rows={2} />
       </Form.Item>
