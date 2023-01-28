@@ -54,10 +54,11 @@ export const getComment = (commentId: string) => {
 
 // 코멘트 수정
 export interface PatchCommentRequest {
+  commentId: string
   comment: string
 }
 
-export const patchComment = (commentId: string, data: PatchCommentRequest) => {
+export const patchComment = ({ commentId, ...data }: PatchCommentRequest) => {
   return axiosClient.patch(`/comments/${commentId}`, data)
 }
 

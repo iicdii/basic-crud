@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { Avatar, Button, Card, List, message, Modal, Skeleton } from 'antd'
+import CommentUpdateForm from '@/components/boards/CommentUpdateForm/CommentUpdateForm'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
 import useDeleteComment from '@/quries/comments/useDeleteComment'
 import { Comment } from '@/types/board'
@@ -12,6 +14,7 @@ interface CommentsProps {
 const Comments = ({ initialData, onSubmit }: CommentsProps) => {
   // TODO - 댓글 조회 API 정상 작동하면 작업
   // const { data, isLoading } = useComments({ initialData })
+  const [mode, setMode] = useState<'view' | 'edit'>('view')
   const commentDelete = useDeleteComment()
   const isLoading = false
   const data = initialData ? initialData : undefined
@@ -33,6 +36,10 @@ const Comments = ({ initialData, onSubmit }: CommentsProps) => {
       },
     })
   }
+  const handleCommentUpdate = () => {
+    setMode('view')
+    onSubmit?.()
+  }
 
   return (
     <Card bordered={false} style={{ marginTop: 10 }}>
@@ -49,22 +56,41 @@ const Comments = ({ initialData, onSubmit }: CommentsProps) => {
         dataSource={data}
         renderItem={(item) => (
           <List.Item
-            actions={[
-              <Button key="comment-update" type="link">
-                수정
-              </Button>,
-              <Button
-                key="comment-delete"
-                type="link"
-                danger
-                onClick={() => handleDelete(item.id)}
-              >
-                삭제
-              </Button>,
-            ]}
+            actions={
+              mode === 'view'
+                ? [
+                    <Button
+                      key="comment-update"
+                      type="link"
+                      onClick={() =>
+                        setMode((state) => (state === 'view' ? 'edit' : 'view'))
+                      }
+                    >
+                      수정
+                    </Button>,
+                    <Button
+                      key="comment-delete"
+                      type="link"
+                      danger
+                      onClick={() => handleDelete(item.id)}
+                    >
+                      삭제
+                    </Button>,
+                  ]
+                : undefined
+            }
           >
             <Skeleton avatar title={false} loading={isLoading} active>
-              <div>{item.comment}</div>
+              {mode === 'edit' ? (
+                <CommentUpdateForm
+                  commentId={item.id}
+                  initialValue={item.comment}
+                  onCancel={() => setMode('view')}
+                  onSubmit={handleCommentUpdate}
+                />
+              ) : (
+                <div>{item.comment}</div>
+              )}
             </Skeleton>
           </List.Item>
         )}
