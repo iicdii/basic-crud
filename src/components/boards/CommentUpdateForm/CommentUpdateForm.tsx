@@ -1,7 +1,7 @@
 import { Button, Form, Input, message } from 'antd'
 import { PatchCommentRequest } from '@/api/comments/comments'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
-import useUpdateComment from '@/quries/comments/useUpdateComment'
+import useCommentUpdate from '@/quries/comments/useCommentUpdate'
 
 const { TextArea } = Input
 
@@ -20,7 +20,7 @@ const CommentUpdateForm = ({
   onSubmit,
   onCancel,
 }: CommentUpdateFormProps) => {
-  const { mutate } = useUpdateComment()
+  const { mutate } = useCommentUpdate()
   const [form] = Form.useForm()
 
   const handleFinish = (values: CommentUpdateFormValues) => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Card, List, message, Modal, Skeleton } from 'antd'
 import CommentUpdateForm from '@/components/boards/CommentUpdateForm/CommentUpdateForm'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
-import useDeleteComment from '@/quries/comments/useDeleteComment'
+import useCommentDelete from '@/quries/comments/useCommentDelete'
 import { Comment } from '@/types/board'
 import styles from './Comments.module.css'
 
@@ -15,7 +15,7 @@ const Comments = ({ initialData, onSubmit }: CommentsProps) => {
   // TODO - 댓글 조회 API 정상 작동하면 작업
   // const { data, isLoading } = useComments({ initialData })
   const [mode, setMode] = useState<'view' | 'edit'>('view')
-  const commentDelete = useDeleteComment()
+  const commentDelete = useCommentDelete()
   const isLoading = false
   const data = initialData ? initialData : undefined
 

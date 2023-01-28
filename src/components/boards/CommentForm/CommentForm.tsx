@@ -1,7 +1,7 @@
 import { Button, Form, Input, message } from 'antd'
 import { PostCommentRequest } from '@/api/comments/comments'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
-import usePostComment from '@/quries/comments/usePostComment'
+import useCommentCreate from '@/quries/comments/useCommentCreate'
 
 const { TextArea } = Input
 
@@ -13,7 +13,7 @@ interface CommentFormProps {
 }
 
 const CommentForm = ({ boardId, onSubmit }: CommentFormProps) => {
-  const { mutate } = usePostComment()
+  const { mutate } = useCommentCreate()
   const [form] = Form.useForm()
 
   const handleFinish = (values: CommentFormValues) => {

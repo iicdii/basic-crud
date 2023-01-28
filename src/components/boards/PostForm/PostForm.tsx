@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { PostBoardRequest } from '@/api/boards/boards'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
 import { QUERY_KEY } from '@/constants/queryKey'
-import usePostBoard from '@/quries/boards/usePostBoard'
+import usePostCreate from '@/quries/boards/usePostCreate'
 
 const { TextArea } = Input
 
@@ -11,7 +11,7 @@ type PostFormValues = PostBoardRequest
 
 const PostForm = () => {
   const queryClient = useQueryClient()
-  const { mutate } = usePostBoard()
+  const { mutate } = usePostCreate()
   const handleFinish = (values: PostFormValues) => {
     const messageKey = 'submitting'
     message.loading({

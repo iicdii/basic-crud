@@ -61,11 +61,12 @@ export const getBoard = (boardId: string) => {
 
 // 게시글 수정
 export interface PatchBoardRequest {
+  boardId: string
   name: string
   content: string
 }
 
-export const patchBoard = (boardId: string, data: PatchBoardRequest) => {
+export const patchBoard = ({ boardId, ...data }: PatchBoardRequest) => {
   return axiosClient.patch(`/boards/${boardId}`, data)
 }
 

@@ -1,12 +1,12 @@
 import { AxiosError } from 'axios'
 import { useMutation } from '@tanstack/react-query'
-import { deleteComment } from '@/api/comments/comments'
+import { deleteBoard } from '@/api/boards/boards'
 import { RequestError } from '@/types/error'
 
-const useDeleteComment = () => {
+const usePostDelete = () => {
   return useMutation<undefined, AxiosError<RequestError>, string>({
-    mutationFn: (commentId) => deleteComment(commentId).then((res) => res.data),
+    mutationFn: (boardId) => deleteBoard(boardId).then((res) => res.data),
   })
 }
 
-export default useDeleteComment
+export default usePostDelete
