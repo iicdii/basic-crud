@@ -17,17 +17,17 @@ const SignUpForm = () => {
   const router = useRouter()
 
   const handleFinish = (values: SignUpFormValues) => {
-    const msgKey = 'submitting'
-    message.loading({ key: msgKey, content: '회원가입 중' })
+    const messageKey = 'submitting'
+    message.loading({ key: messageKey, content: '회원가입 중' })
     mutate(values, {
       onSuccess: (res) => {
-        message.destroy(msgKey)
+        message.destroy(messageKey)
         message.info('회원가입 성공')
         storage.setItem(ACCESS_TOKEN_NAME, res.data.token.token)
         router.push('/main')
       },
       onError: (error) => {
-        message.destroy(msgKey)
+        message.destroy(messageKey)
         const { data } = error.response || {}
         if ((data?.statusCode || 0) === 400) {
           if (Array.isArray(data?.message)) {

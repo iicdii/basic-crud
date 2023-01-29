@@ -25,6 +25,12 @@ const Home = () => {
     const [accessToken] = hash.split('&')
     storage.setItem(NAVER_TOKEN_NAME, accessToken)
 
+    const messageKey = 'submitting'
+    message.loading({
+      key: messageKey,
+      content: '로그인 중',
+    })
+
     // 소셜 로그인 시도
     // 로그인 실패 시 소셜 회원가입 시도
     // 실패 시 에러 메세지 출력
@@ -34,9 +40,11 @@ const Home = () => {
         token: accessToken,
       })
       storage.setItem(ACCESS_TOKEN_NAME, res.data.token)
+      message.destroy(messageKey)
       router.push('/main')
       return
     } catch (e: unknown) {
+      message.destroy(messageKey)
       if (e instanceof AxiosError<RequestError>) {
         if ((e.response?.status || 0) >= 500) {
           message.error(
@@ -59,8 +67,10 @@ const Home = () => {
         username: username + '123',
       })
       storage.setItem(ACCESS_TOKEN_NAME, res.data.token)
+      message.destroy(messageKey)
       router.push('/main')
     } catch (e: unknown) {
+      message.destroy(messageKey)
       if (e instanceof AxiosError<RequestError>) {
         if ((e.response?.status || 0) >= 500) {
           message.error(
@@ -78,7 +88,10 @@ const Home = () => {
       <div className={styles.title}>
         <Title level={2}>로그인</Title>
       </div>
-      <LoginForm onGetNaverUserInfo={handleNaverLogin} />
+      <LoginForm
+        onGetNaverUserInfo={handleNaverLogin}
+        loading={socialLogin.isLoading || socialSignUp.isLoading}
+      />
     </div>
   )
 }

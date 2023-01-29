@@ -17,9 +17,10 @@ const { Text } = Typography
 
 interface LoginFormProps {
   onGetNaverUserInfo: (user: NaverUserInfo) => void
+  loading?: boolean
 }
 
-const LoginForm = ({ onGetNaverUserInfo }: LoginFormProps) => {
+const LoginForm = ({ onGetNaverUserInfo, loading }: LoginFormProps) => {
   const { mutate } = useSignIn()
 
   const handleFinish = (values: LoginFormValues) => {
@@ -51,6 +52,7 @@ const LoginForm = ({ onGetNaverUserInfo }: LoginFormProps) => {
       onFinish={handleFinish}
       layout="vertical"
       autoComplete="off"
+      disabled={loading}
     >
       <Form.Item
         label="아이디"
