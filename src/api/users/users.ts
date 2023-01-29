@@ -11,7 +11,9 @@ export interface PostUserSignUpRequest {
 
 export interface PostUserSignUpResponse {
   data: {
-    token: string
+    token: {
+      token: string
+    }
   }
   message: string
 }

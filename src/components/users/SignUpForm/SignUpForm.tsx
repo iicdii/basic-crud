@@ -1,6 +1,7 @@
 'use client'
 
 import { Button, Divider, Form, Input, message } from 'antd'
+import { useRouter } from 'next/navigation'
 import { PostUserSignUpRequest } from '@/api/users/users'
 import NaverLogin from '@/components/users/NaverLogin/NaverLogin'
 import styles from '@/components/users/SignUpForm/SignUpForm.module.css'
@@ -13,6 +14,7 @@ type SignUpFormValues = PostUserSignUpRequest
 
 const SignUpForm = () => {
   const { mutate } = useSignUp()
+  const router = useRouter()
 
   const handleFinish = (values: SignUpFormValues) => {
     const msgKey = 'submitting'
@@ -21,7 +23,8 @@ const SignUpForm = () => {
       onSuccess: (res) => {
         message.destroy(msgKey)
         message.info('회원가입 성공')
-        storage.setItem(ACCESS_TOKEN_NAME, res.data.token)
+        storage.setItem(ACCESS_TOKEN_NAME, res.data.token.token)
+        router.push('/main')
       },
       onError: (error) => {
         message.destroy(msgKey)
