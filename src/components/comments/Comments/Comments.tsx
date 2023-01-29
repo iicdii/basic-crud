@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { Button, Card, List, message, Modal, Skeleton } from 'antd'
-import styles from 'src/components/comments/Comments/Comments.module.css'
 import CommentUpdateForm from '@/components/comments/CommentUpdateForm/CommentUpdateForm'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
 import useCommentDelete from '@/queries/comments/useCommentDelete'
-import { Comment } from '@/types/board'
+import { Comment } from '@/types/comment'
 
 interface CommentsProps {
   initialData?: Omit<Comment, 'boardsId'>[]

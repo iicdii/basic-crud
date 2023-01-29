@@ -5,11 +5,3 @@ export interface Post {
   name: string
   usersId: string
 }
-
-export interface Comment {
-  id: string
-  boardsId: string
-  comment: string
-  created_at: string
-  usersId: string
-}

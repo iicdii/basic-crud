@@ -1,4 +1,4 @@
-import { Comment } from '@/types/board'
+import { Comment } from '@/types/comment'
 import axiosClient from '@/utils/axiosClient'
 
 // 코멘트 작성

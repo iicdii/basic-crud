@@ -22,8 +22,10 @@ const removeItem = (key: string) => {
   }
 }
 
-export default {
+const storage = {
   setItem,
   getItem,
   removeItem,
 }
+
+export default storage

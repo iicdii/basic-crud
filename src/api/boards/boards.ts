@@ -1,5 +1,6 @@
 import { ACCESS_TOKEN_NAME } from '@/constants/constants'
-import { Post, Comment } from '@/types/board'
+import { Post } from '@/types/board'
+import { Comment } from '@/types/comment'
 import axiosClient from '@/utils/axiosClient'
 import storage from '@/utils/storage'
 
