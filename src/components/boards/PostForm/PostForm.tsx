@@ -1,4 +1,4 @@
-import { Button, Form, Input, message } from 'antd'
+import { Button, Card, Form, Input, message } from 'antd'
 import { useQueryClient } from '@tanstack/react-query'
 import { PostBoardRequest } from '@/api/boards/boards'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
@@ -32,35 +32,37 @@ const PostForm = () => {
   }
 
   return (
-    <Form
-      name="post"
-      initialValues={{}}
-      onFinish={handleFinish}
-      layout="vertical"
-      autoComplete="off"
-    >
-      <Form.Item
-        label="제목"
-        name="name"
-        rules={[{ required: true, message: '제목을 입력해 주세요' }]}
+    <Card bordered={false}>
+      <Form
+        name="post"
+        initialValues={{}}
+        onFinish={handleFinish}
+        layout="vertical"
+        autoComplete="off"
       >
-        <Input />
-      </Form.Item>
+        <Form.Item
+          label="제목"
+          name="name"
+          rules={[{ required: true, message: '제목을 입력해 주세요' }]}
+        >
+          <Input />
+        </Form.Item>
 
-      <Form.Item
-        label="내용"
-        name="content"
-        rules={[{ required: true, message: '내용을 입력해 주세요' }]}
-      >
-        <TextArea rows={4} />
-      </Form.Item>
+        <Form.Item
+          label="내용"
+          name="content"
+          rules={[{ required: true, message: '내용을 입력해 주세요' }]}
+        >
+          <TextArea rows={4} />
+        </Form.Item>
 
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          작성
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            작성
+          </Button>
+        </Form.Item>
+      </Form>
+    </Card>
   )
 }
 
