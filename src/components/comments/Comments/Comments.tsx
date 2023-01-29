@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Button, Card, List, message, Modal, Skeleton } from 'antd'
-import CommentUpdateForm from '@/components/boards/CommentUpdateForm/CommentUpdateForm'
+import styles from 'src/components/comments/Comments/Comments.module.css'
+import CommentUpdateForm from '@/components/comments/CommentUpdateForm/CommentUpdateForm'
 import { COMMON_ERROR_MESSAGE } from '@/constants/error'
 import useCommentDelete from '@/queries/comments/useCommentDelete'
 import { Comment } from '@/types/board'
-import styles from './Comments.module.css'
 
 interface CommentsProps {
   initialData?: Omit<Comment, 'boardsId'>[]
@@ -15,11 +15,11 @@ const Comments = ({ initialData, onSubmit }: CommentsProps) => {
   // TODO - 댓글 조회 API 정상 작동하면 작업
   // const { data, isLoading } = useComments({ initialData })
   const [mode, setMode] = useState<'view' | 'edit'>('view')
+  const [editId, setEditId] = useState<string>()
   const commentDelete = useCommentDelete()
   const isLoading = false
   const data = initialData ? initialData : undefined
 
-  const handleLoadMore = () => {}
   const handleDelete = (commentId: string) => {
     Modal.confirm({
       title: '정말 삭제하시겠습니까?',
@@ -46,13 +46,6 @@ const Comments = ({ initialData, onSubmit }: CommentsProps) => {
       <List
         loading={isLoading}
         itemLayout="horizontal"
-        loadMore={
-          !isLoading && data?.length ? (
-            <div className={styles.loadMore}>
-              <Button onClick={handleLoadMore}>더 보기</Button>
-            </div>
-          ) : null
-        }
         locale={{ emptyText: '댓글이 없습니다.' }}
         dataSource={data}
         renderItem={(item) => (
@@ -63,9 +56,10 @@ const Comments = ({ initialData, onSubmit }: CommentsProps) => {
                     <Button
                       key="comment-update"
                       type="link"
-                      onClick={() =>
+                      onClick={() => {
                         setMode((state) => (state === 'view' ? 'edit' : 'view'))
-                      }
+                        setEditId(item.id)
+                      }}
                     >
                       수정
                     </Button>,
@@ -82,7 +76,7 @@ const Comments = ({ initialData, onSubmit }: CommentsProps) => {
             }
           >
             <Skeleton avatar title={false} loading={isLoading} active>
-              {mode === 'edit' ? (
+              {mode === 'edit' && editId === item.id ? (
                 <CommentUpdateForm
                   commentId={item.id}
                   initialValue={item.comment}

@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { Button, Space } from 'antd'
+import styles from 'src/components/boards/UserPosts/UserPosts.module.css'
 import { GetUserPostsParams } from '@/api/boards/boards'
 import Post from '@/components/boards/Post/Post'
 import useUserPosts from '@/queries/boards/useUserPosts'
 import { Post as PostType } from '@/types/board'
-import styles from './UserPosts.module.css'
 
 const UserPosts = () => {
   const [params, setParams] = useState<GetUserPostsParams>({ skip: 0, take: 5 })
@@ -14,12 +14,14 @@ const UserPosts = () => {
 
   const hasPrev = params.skip >= params.take
   const hasMore = (data?.data?.length || 0) >= params.take
+
   const handlePrev = () => {
     setParams({
       skip: Math.max(params.skip - params.take, 0),
       take: params.take,
     })
   }
+
   const handleNext = () => {
     setParams({ skip: params.skip + params.take, take: params.take })
   }

@@ -3,6 +3,7 @@ export const QUERY_KEY = {
   getBoards: 'getBoards',
   getBoard: 'getBoard',
   getUserBoards: 'getUserBoards',
+  getUserComments: 'getUserComments',
   getComments: 'getComments',
   getComment: 'getComment',
 }

@@ -2,9 +2,9 @@
 
 import { Skeleton } from 'antd'
 import { usePathname } from 'next/navigation'
-import CommentForm from '@/components/boards/CommentForm/CommentForm'
-import Comments from '@/components/boards/Comments/Comments'
 import Post from '@/components/boards/Post/Post'
+import CommentForm from '@/components/comments/CommentForm/CommentForm'
+import Comments from '@/components/comments/Comments/Comments'
 import usePost from '@/queries/boards/usePost'
 import styles from './Board.module.css'
 
