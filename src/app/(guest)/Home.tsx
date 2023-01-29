@@ -20,9 +20,9 @@ const Home = () => {
   const router = useRouter()
 
   const handleNaverLogin = async (user: NaverUserInfo) => {
-    const [, x] = window.location.hash.split('=')
-    if (!x) return
-    const [accessToken] = x.split('&')
+    const [, hash] = window.location.hash.split('=')
+    if (!hash) return
+    const [accessToken] = hash.split('&')
     storage.setItem(NAVER_TOKEN_NAME, accessToken)
 
     // 소셜 로그인 시도
