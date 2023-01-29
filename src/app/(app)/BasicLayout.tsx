@@ -30,6 +30,8 @@ const BasicLayout = ({ children }: BasicLayoutProps) => {
     router.push('/')
   }
 
+  console.log(data)
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Header style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -54,6 +56,7 @@ const BasicLayout = ({ children }: BasicLayoutProps) => {
               ],
             },
           ]}
+          style={{ flex: 1, justifyContent: 'flex-end' }}
         />
       </Header>
       <Content style={{ padding: '0 50px' }}>
