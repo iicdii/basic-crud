@@ -53,6 +53,7 @@ const Comments = ({ initialData, onSubmit }: CommentsProps) => {
             </div>
           ) : null
         }
+        locale={{ emptyText: '댓글이 없습니다.' }}
         dataSource={data}
         renderItem={(item) => (
           <List.Item
