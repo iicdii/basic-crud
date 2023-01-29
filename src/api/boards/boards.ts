@@ -41,7 +41,7 @@ export interface GetUserPostsParams {
 }
 
 export const getUserPosts = (params: GetUserPostsParams) => {
-  return axiosClient.get('/boards/user/posts', {
+  return axiosClient.get<GetBoardsResponse>('/boards/user/posts', {
     params,
   })
 }
